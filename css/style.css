@@ -1,0 +1,128 @@
+body, body h1 {
+    font-family: Quicksand, sans-serif;
+    font-weight: 500;
+    /*background-color: #bff2ba;*/
+}
+
+h1{
+    text-align: center;
+}
+
+#mycp{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.eleve {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    color: #FFF;
+    background: #CCC;
+}
+
+
+.eleve img {
+    opacity: .7;
+    transition: 1.5s;
+    transform: scale(1.01);
+    max-width: 100%;
+}
+
+.eleve:hover img,
+.present img{
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+.eleve .input-group {
+    opacity: 0.8;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    transition: 1s;
+    padding: 0 10px;
+}
+
+.eleve .input-img-name {
+    bottom: 40px;
+}
+
+.eleve:hover .input-group {
+    opacity: 1;
+}
+
+.eleve input {
+    font-family: Quicksand, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    padding: 1px 6px 1px;
+    text-align: center;
+    transition: .5s;
+}
+
+.eleve input:focus {
+    outline: 0 none;
+    /*border: 0 none;*/
+    box-shadow: 0 0 0 #000;
+    /*font-size: 25px;*/
+}
+
+.eleve input::placeholder {
+    color: #CCC;
+}
+
+.eleve input:focus::placeholder {
+    color: #EEE;
+}
+
+.eleve .btn {
+    font-size: 15px;
+    padding: 0 5px;
+}
+
+.dropdown-menu {
+    width: 450px !important;
+}
+
+#dropdown-menu-apropos{
+    width: 600px !important;
+    height: 150px !important;
+}
+
+input[id-transparent="inputImgName"]{
+    background: transparent !important;
+    border:none;
+    color:black;
+    text-align: left;
+}
+
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    display: block;
+    position:absolute;
+    left:0; right:0;
+    top:0; bottom:0;
+    margin:auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

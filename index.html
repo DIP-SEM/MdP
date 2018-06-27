@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
-    
-    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/blitzer/jquery-ui.css" rel="stylesheet">    
-    <!-- Custom styles for this template -->
-    <link href="css/bootstrap.css" rel="stylesheet">
- 	<link href="css/toggle-switch.css" rel="stylesheet">
-    <link href="css/gallery.css" rel="stylesheet">
-    <link href="css/shadows.css" rel="stylesheet">
 
-    <script src="js/config.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jquery-confirm.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
     
     <title>Maison des Présences</title>
     
@@ -27,506 +24,142 @@
     
 </head>
 <body>
-	<audio id="OK" class="sound" src="snd/OK.ogg"></audio>
-	<audio id="KO" class="sound" src="snd/KO.ogg"></audio>
+
+    <audio id="OK" class="sound" src="snd/son1.mp3"></audio>
+    <audio id="KO" class="sound" src="snd/trompe.mp3"></audio>
+
+    <!--https://www.librairie-interactive.com/la-langue-francaise-en-mp3#forum3074-->
+    <audio id="65" class="sound" src="snd/alphabet/a.mp3"></audio>
+    <audio id="66" class="sound" src="snd/alphabet/b.mp3"></audio>
+    <audio id="67" class="sound" src="snd/alphabet/c.mp3"></audio>
+    <audio id="68" class="sound" src="snd/alphabet/d.mp3"></audio>
+    <audio id="69" class="sound" src="snd/alphabet/e.mp3"></audio>
+    <audio id="70" class="sound" src="snd/alphabet/f.mp3"></audio>
+    <audio id="71" class="sound" src="snd/alphabet/g.mp3"></audio>
+    <audio id="72" class="sound" src="snd/alphabet/h.mp3"></audio>
+    <audio id="73" class="sound" src="snd/alphabet/i.mp3"></audio>
+    <audio id="74" class="sound" src="snd/alphabet/j.mp3"></audio>
+    <audio id="75" class="sound" src="snd/alphabet/k.mp3"></audio>
+    <audio id="76" class="sound" src="snd/alphabet/l.mp3"></audio>
+    <audio id="77" class="sound" src="snd/alphabet/m.mp3"></audio>
+    <audio id="78" class="sound" src="snd/alphabet/n.mp3"></audio>
+    <audio id="79" class="sound" src="snd/alphabet/o.mp3"></audio>
+    <audio id="80" class="sound" src="snd/alphabet/p.mp3"></audio>
+    <audio id="81" class="sound" src="snd/alphabet/q.mp3"></audio>
+    <audio id="82" class="sound" src="snd/alphabet/r.mp3"></audio>
+    <audio id="83" class="sound" src="snd/alphabet/s.mp3"></audio>
+    <audio id="84" class="sound" src="snd/alphabet/t.mp3"></audio>
+    <audio id="85" class="sound" src="snd/alphabet/u.mp3"></audio>
+    <audio id="86" class="sound" src="snd/alphabet/v.mp3"></audio>
+    <audio id="87" class="sound" src="snd/alphabet/w.mp3"></audio>
+    <audio id="88" class="sound" src="snd/alphabet/x.mp3"></audio>
+    <audio id="89" class="sound" src="snd/alphabet/y.mp3"></audio>
+    <audio id="90" class="sound" src="snd/alphabet/z.mp3"></audio>
+
 	
-    <div id="nav-bar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand btn" href="#" id="home">Maison des Présences</a>
+    <div id="nav-bar" class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="#">Maison des présences</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" id="eleve-mode" href="" >Mode élève</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="effacerPresences">Effacer les présences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="reset">Réinitialiser la classe</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Configuration
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#" class="dropdown-item"> <input type="checkbox" value="case-sense" id="case-sense"> Respect des majuscules</input> </a>
+                        <a href="#" class="dropdown-item"> <input type="checkbox" value="case-accent" id="accent-sense"> Respect des accents</input> </a>
+                        <a href="#" class="dropdown-item"> <input type="checkbox" value="afficherNoms" id="afficher-nom"> Afficher les noms</input> </a>
+                        <a href="#" class="dropdown-item"> <input type="checkbox" value="shuffle" id="shuffle"> Mélanger les élèves</input> </a>
+                        <a href="#" class="dropdown-item"> <input type="checkbox" value="lireLettres" id="lecture-lettres"> Lecture des lettres</input> </a>
+                        <!--<a href="#" class="dropdown-item"> <input type="checkbox" value="autoOrientation" id="autoOrientation">Orientation automatique</input> </a>-->
+                        <div class="dropdown-divider"></div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Nom de la classe</span>
+                            </div>
+                            <input type="text" class="form-control" id="class-name"  aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2">Nombre d'élèves </span>
+                            </div>
+                            <input type="text" class="form-control" id="nb-student" value="0" disabled aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div id="mycp" ></div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAPropos" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        A propos
+                    </a>
+                    <div class="dropdown-menu" id="dropdown-menu-apropos" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#"><h4 class="modal-title">A propos de Maison des Présences</h4></a>
+                        <a class="dropdown-item" href="https://www.ge.ch/sem/"> © Copyright 2014: DSI-SEM (https://www.ge.ch/sem)</a>
+                        <a class="dropdown-item" href="http://www.gnu.org/licenses/gpl.html"> Version développée sous licence GNU/GPLv3 par l’Etat de Genève </a>
+                    </div>
+                </li>
+                <li>
+                    <div id="mycp2" data-color="rgba(194, 39, 219, 0.4)"></div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a class="form-control mr-sm-2" href="#files" class="active"><input type="file" id="file-input" name="file-input[]"  multiple/></a>
+            </form>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#reset" id="reset" class="btn">Réinitialiser</a></li>
-          	<li><a href="#config" data-toggle="modal" class="btn">Configuration</a></li>
-          	<li><a href="#about" data-toggle="modal" class="btn">A propos</a></li>   	
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#files" class="active"><input type="file" id="file-input" name="file-input[]" multiple/></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
     </div>
 	<br>
     <div class="starter-template">
+        <div class="loader"></div>
       <h1 class="classe"></h1>
-      <div class="main">
-    			<div class="item drop-shadow round" id="name-form" data-id="1">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="1"/> 
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="1" placeholder="Ecris ton prénom" tabindex="1"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="1" data-toggle="tooltip" data-placement="left" title="Valider">OK</button>
-        				<button class="btn btn-success" id="record" data-id="1" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="1" data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-           		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="2">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                        <input name="img-name" type="hidden" id="Ilabel" data-id="2"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="2" placeholder="Ecris ton prénom" tabindex=2"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="2" data-toggle="tooltip" data-placement="left" title="Valider">OK</button>
-        				<button class="btn btn-success" id="record" data-id="2" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="2"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="3">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                      	<input name="img-name" type="hidden" id="Ilabel" data-id="3"/>                   	
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="3" placeholder="Ecris ton prénom" tabindex="3"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="3" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="3" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="3"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		  </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="4">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                       	<input name="img-name" type="hidden" id="Ilabel" data-id="4"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="4" placeholder="Ecris ton prénom" tabindex="4"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="4" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="4" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="4"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="5">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="5"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="5" placeholder="Ecris ton prénom" tabindex="5"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="5" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="5" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="5"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="6">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="6"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="6" placeholder="Ecris ton prénom" tabindex="6"/>
-						<button class="btn btn-default btn-primary" id="verify" data-id="6" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="6"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="6"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="7">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="7"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="7" placeholder="Ecris ton prénom" tabindex="7"/>
-						<button class="btn btn-default btn-primary" id="verify" data-id="7" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="7" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="7"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="8">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="8"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="8" placeholder="Ecris ton prénom" tabindex="7"/>
-						<button class="btn btn-default btn-primary" id="verify" data-id="8" data-toggle="tooltip" data-placement="left" title="Valider">OK</button>	
-    					<button class="btn btn-success" id="record" data-id="8" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="8"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="9">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="9"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="9" placeholder="Ecris ton prénom" tabindex="8"/>
-						<button class="btn btn-default btn-primary" id="verify" data-id="9" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="9" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="9"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="10">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="10"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="10" placeholder="Ecris ton prénom" tabindex="9"/>
-						<button class="btn btn-default btn-primary" id="verify" data-id="10" data-toggle="tooltip" data-placement="left" title="Valider">OK</button>
-    					<button class="btn btn-success" id="record" data-id="10"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="10"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="11">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="11"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="11" placeholder="Ecris ton prénom" tabindex="10"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="11" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="11" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="11"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="12">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="12"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="12" placeholder="Ecris ton prénom" tabindex="11"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="12" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="12"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="12"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="13">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="13"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="13" placeholder="Ecris ton prénom" tabindex="12"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="13" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="13"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="13"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="14">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="14"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="14" placeholder="Ecris ton prénom" tabindex="13"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="14" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="14"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="14"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="15">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                        <input name="img-name" type="hidden" id="Ilabel" data-id="15"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="15" placeholder="Ecris ton prénom" tabindex="14"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="15" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="15"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="15"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="16">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="16"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="16" placeholder="Ecris ton prénom" tabindex="15"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="16" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="16"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="16"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="17">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="17"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="17" placeholder="Ecris ton prénom" tabindex="16"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="17" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="17"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="17"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="18">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   	    <input name="img-name" type="hidden" id="Ilabel" data-id="18"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="18" placeholder="Ecris ton prénom" tabindex="17"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="18" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="18"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="18"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="19">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   	    <input name="img-name" type="hidden" id="Ilabel" data-id="19"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="19" placeholder="Ecris ton prénom" tabindex="18"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="19" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="19"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="19"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="20">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="20"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="20" placeholder="Ecris ton prénom" tabindex="19"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="20" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="20"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="20"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="21">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-						<input name="img-name" type="hidden" id="Ilabel" data-id="21"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="21" placeholder="Ecris ton prénom" tabindex="20"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="21" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="21"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="21"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="22">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   	    <input name="img-name" type="hidden" id="Ilabel" data-id="22"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="22" placeholder="Ecris ton prénom" tabindex="21"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="22" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="22"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="22"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="23">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="23"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="23" placeholder="Ecris ton prénom" tabindex="22"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="23" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="23"  data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="23"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="24">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-                   		<input name="img-name" type="hidden" id="Ilabel" data-id="24"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="24" placeholder="Ecris ton prénom" tabindex="23"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="24" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="24" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="24"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
-    			<div class="item drop-shadow round" id="name-form" data-id="25">
-                   <div class="item-image">
-                       <a href="#" id="Tlabel"><img data-src="js/holder.js/100x150/gray/text: "></a>
-                   </div>
-                   <div class="input-group">
-               		    <input name="img-name" type="hidden" id="Ilabel" data-id="25"/>
-        		 	    <input name="name-input" type="text" class="input-lg form-control" id="name-input" data-id="25" placeholder="Ecris ton prénom" tabindex="24"/>
-        			    <button class="btn btn-default btn-primary" id="verify" data-id="25" data-toggle="tooltip" data-placement="left" title="Valider">OK</button> 
-    					<button class="btn btn-success" id="record" data-id="25" data-toggle="tooltip" data-placement="left" title="Actualiser">
-        				   <span class="glyphicon glyphicon-record"></span>
-        				</button>
-        				<button class="btn btn-danger" id="trash" data-id="25"  data-toggle="tooltip" data-placement="left" title="Supprimer">
-        				   <span class="glyphicon glyphicon-trash"></span>
-        				</button>
-        		   </div>   
-        		</div>
+      <div class="main container-fluid" id="main">
+		  <!--  Div students will be here -->
+        <div id="classe" class="row no-gutters ">
 
+        </div>
       </div> <!--  main -->
 
-	  <!-- Modal -->
-	  <div class="modal fade" id="config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    <div class="modal-dialog">
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	          <h4 class="modal-title">Configuration</h4>
-	        </div>
-	        <div class="modal-body"> 
-		        <div class="span6">
-	               <p><input type="checkbox" class="span12" name="options" id="case-sense"> Respect des majuscules</input></p>
-	               <p><input type="checkbox" class="span12" name="options" id="accent-sense"> Respect des accents</input></p>
-	               <p><input type="text" class="span24" name="title" id="class-name" placeholder="Ecrivez nom de la classe"/></p> 
-		        </div>
-		        <div class="span4">
-			       	<div class="switch-toggle well">
-						<input id="prof" name="mdp-mode" type="radio" checked>
-						<label for="prof" onclick="">Professeur</label>
-						<input id="eleve" name="mdp-mode" type="radio">
-						<label for="eleve" onclick="">Elève</label>
-						<a class="btn btn-primary"></a>
-    				</div>
-		        </div>
-		    </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-	          <!--  button type="button" class="btn btn-primary" id="save-options">Sauvegarde</button -->
-	        </div>
-	      </div><!-- /.modal-content -->
-	    </div><!-- /.modal-dialog -->
-	  </div><!-- /.modal -->
-	  
-	  <!-- Modal -->
-	  <div class="modal fade" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    <div class="modal-dialog">
-	      <div class="modal-content">
-	        <div class="modal-header">
-	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	          <h4 class="modal-title">A propos de Maison des Présences</h4>
-	        </div>
-	        <div class="modal-body">
-		      <p>© Copyright 2014: DSI-SEM <a href="https://www.ge.ch/sem/">(https://www.ge.ch/sem)</a></p>
-	          <p>Version développée sous licence GNU/GPLv3 par l’Etat de Genève</p>
-	          <p><a href="http://www.gnu.org/licenses/gpl.html">www.gnu.org/licenses/gpl.html</a></p>
-		    </div>
-	        <div class="modal-footer">
-	          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-	        </div>
-	      </div><!-- /.modal-content -->
-	    </div><!-- /.modal-dialog -->
-	  </div><!-- /.modal -->
-	  
-	  
   </div> <!-- /starter-template -->
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap-growl.min.js"></script>
-    <script src="js/jquery.easy-confirm-dialog.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/load-image.min.js"></script>
+
+    <script src="js/JQuery/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/bootstrap/popper.min.js"></script>
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/JQuery/jquery-confirm.min.js"></script>
+    <script src="js/bootstrap/bootstrap-notify.min.js"></script>
+
+
+    <link href="bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css" rel="stylesheet">
+    <script src="bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js"></script>
+
+
     <script src="js/latinise.min_.js"></script>
-    <script src="js/simpleStorage.js"></script>
-    <script src="js/holder.js"></script>
-    <script src="js/shuffle.js"></script>
+    <script src="js/storage/simpleStorage.js"></script>
+    <script src="js/functions.js"></script>
     <script src="js/app.js"></script>
-    <script src="js/db.js"></script>
+    <script src="js/handlers.js"></script>
+    <script src="js/storage/db.js"></script>
+
+    <!--Load image version 2.19.0-->
+    <script src="js/loadimage/load-image.js"></script>
+    <script src="js/loadimage/load-image-scale.js"></script>
+    <script src="js/loadimage/load-image-meta.js"></script>
+    <script src="js/loadimage/load-image-fetch.js"></script>
+    <script src="js/loadimage/load-image-exif.js"></script>
+    <script src="js/loadimage/load-image-exif-map.js"></script>
+    <script src="js/loadimage/load-image-orientation.js"></script>
+
+
+
 </body>
 </html>
