@@ -42,7 +42,7 @@ var result = $('#row'),
     var divTuto = document.createElement('div');
     divTuto.className = "emptyContent";
     divTuto.id = "emptyContent";
-    var explanation = document.createTextNode("Pour ajouter des élèves, utilisez la fontion parcourir, ou glissez-déposez les fichiers dans la fenêtre, depuis le mode d'administration.");
+    var explanation = document.createTextNode("Pour ajouter des élèves, utilisez la fonction parcourir, ou glissez-déposez les fichiers dans la fenêtre, depuis le mode d'administration.");
     divTuto.appendChild(explanation);
     document.getElementById('classe').appendChild(divTuto);
 };
