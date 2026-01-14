@@ -78,22 +78,22 @@ $("#effacerPresences").on('click', function (e) {
 
 // Handler for options checkbox
 $( "input[type='checkbox']" ).change(function() {
-    if($(this).val() == "case-sense"){
+    if($(this).val() === "case-sense"){
         simpleStorage.set('caseSense', $(this).prop('checked'), {TTL: 0});
     }
-    if($(this).val() == "afficherNoms"){
+    if($(this).val() === "afficherNoms"){
         simpleStorage.set('afficherNoms', $(this).prop('checked'), {TTL: 0});
     }
 
-    if($(this).val() == "case-accent"){
+    if($(this).val() === "case-accent"){
         simpleStorage.set('accentSense',$(this).prop('checked'), {TTL: 0});
     }
 
-    if($(this).val() == "shuffle"){
+    if($(this).val() === "shuffle"){
         simpleStorage.set('shuffle', $(this).prop('checked'), {TTL: 0});
     }
 
-    if($(this).val() == "lireLettres"){
+    if($(this).val() === "lireLettres"){
         simpleStorage.set('lectureLettres',$(this).prop('checked'), {TTL: 0});
     }
 
@@ -110,13 +110,18 @@ $( "#class-name" ).change(function() {
 /* Click on item image */
 $('body').on('click', '.item-image*', function (e) {
     var nb = $(this).attr("data-id");
-    var selector1 = "[name='name-input'][tabindex='"+nb+"']";
+    var selector1 = "[name='name-input'][data-id='"+nb+"']";
     $(selector1).focus();
 });
 
-$('body').on('keydown', '#name-input*', function (e) {
+$('body').on('input', '#name-input*', function (e) {
     if(simpleStorage.get("studentView") && simpleStorage.get('lectureLettres')){
-        lireLettres(e.keyCode);
+        // Récupérer le dernier caractère tapé
+        var val = $(this).val();
+        if (val.length > 0) {
+            var lastChar = val.charAt(val.length - 1);
+            lireLettres(lastChar);
+        }
     }
 });
 

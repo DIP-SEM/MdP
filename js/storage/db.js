@@ -18,9 +18,9 @@ var nameDB = (function() {
   var tDB = {};
   var db = null;
   
-   DB_NAME = 'mdp-indexedDB';
-   DB_VERSION = 1; // Use a long long for this value (don't use a float)
-   DB_STORE_NAME = 'mdp';
+  const DB_NAME = 'mdp-indexedDB';
+  const DB_VERSION = 1; // Use a long long for this value (don't use a float)
+  const DB_STORE_NAME = 'mdp';
 
 
 
@@ -163,7 +163,7 @@ var nameDB = (function() {
       }
       
       names.push(result.value);
-      if (result.hasOwnProperty('blob') && typeof value.blob != 'undefined') {
+      if (result.hasOwnProperty('blob') && typeof result.blob !== 'undefined') {
       	console.log("DB.fetchNames: result has blob property");
       }
       

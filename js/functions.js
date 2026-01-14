@@ -84,7 +84,7 @@ function playSoundHandler (id) {
     console.log("if ("+nameValue+")");
     console.log("equals ("+fnameValue+")");
 
-    if (nameValue == fnameValue) {
+    if (nameValue === fnameValue) {
         $(selector1).css('backgroundColor', 'lightGreen');
         //son juste aléatoire
         var son = "snd/son"+ Math.floor((Math.random() * 3) + 1) +".mp3";
@@ -92,7 +92,7 @@ function playSoundHandler (id) {
         sndOK.get(0).play();
         // add student name to array in order to keep it saved even if user reload page
         var arr = simpleStorage.get("rightNames");
-        if(arr == null){
+        if(arr === null){
             arr = [];
         }
         arr.push($.trim($(selector1).val()));
@@ -106,10 +106,28 @@ function playSoundHandler (id) {
 };
 
 
-function lireLettres(code) {
-    for(var i=65; i<91; i++){
-        if(code == i){
-            $('#'+i+'').get(0).play();
+function lireLettres(key) {
+    if (!key || key.length !== 1) return;
+
+    var keyLower = key.toLowerCase();
+
+    // D'abord essayer le son accentué
+    var audioAccent = document.getElementById('snd-' + keyLower);
+    if (audioAccent) {
+        audioAccent.currentTime = 0;
+        audioAccent.play();
+        return;
+    }
+
+    // Sinon, jouer la lettre de base (A-Z)
+    var lettre = key.toUpperCase().latinise();
+    var code = lettre.charCodeAt(0);
+
+    if (code >= 65 && code <= 90) {
+        var audio = document.getElementById(code);
+        if (audio) {
+            audio.currentTime = 0;
+            audio.play();
         }
     }
 };
@@ -125,7 +143,7 @@ function deleteThumbnailHandler(id) {
     console.log("To-be-deleted Key="+key);
 
     var retVal = confirm("Voulez-vous supprimer image miniature ?");
-    if( retVal == true ){
+    if(retVal){
         // delete the div
         var element = document.querySelector('[data-id="'+id+'"]');
         document.getElementById('classe').removeChild(element);
@@ -226,10 +244,10 @@ function updateThumbnailsHandler() {
 
 function checkIfAlreadyWritten(name){
     var arr = simpleStorage.get("rightNames");
-    if(arr != null){
+    if(arr !== null){
         for(var i=0; i<arr.length; i++){
             console.log("nom deja ecrits: " + arr[i]);
-            if(arr[i].toUpperCase()==name.toUpperCase()){
+            if(arr[i].toUpperCase() === name.toUpperCase()){
                 return true;
             }
         }
@@ -262,9 +280,9 @@ function radioViewHandler() {
 
             $(".starter-template h1").show();
 
-            if (simpleStorage.get('requires-save') == true) {
+            if (simpleStorage.get('requires-save')) {
                 var retVal = confirm("Voulez-vous sauvegarder modifications avant proceder ?");
-                if (retVal == true) {
+                if (retVal) {
                     updateThumbnailsHandler();
                 }
             }
@@ -656,7 +674,7 @@ function initialize(e){
 
     // automatically deleting student presences
     var timeForPresence = simpleStorage.get("timeForPresence");
-    if(timeForPresence == null){
+    if(timeForPresence === null){
         simpleStorage.set("timeForPresence", Date.now());
     }
 

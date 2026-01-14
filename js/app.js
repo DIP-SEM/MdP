@@ -27,7 +27,7 @@
 
 
 /* Set the numbers of hours before the automatic reinitialisation of presence starts*/
-NB_HOURS_REINITIALISATION = 10;
+const NB_HOURS_REINITIALISATION = 10;
 
 $(function () {
         
